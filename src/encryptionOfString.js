@@ -3,12 +3,14 @@ console.clear();
 const input = "chillout";
 
 function main(input) {
-  // Get the row and column of the grid
   const noWhiteSpaceInput = input.replaceAll(" ", "");
-  const col = Math.ceil(Math.sqrt(noWhiteSpaceInput.length));
-  const row = Math.floor(Math.sqrt(noWhiteSpaceInput.length));
+  let col = Math.ceil(Math.sqrt(noWhiteSpaceInput.length));
+  let row = Math.floor(Math.sqrt(noWhiteSpaceInput.length));
 
-  console.log(row, col);
+  if (col * row < noWhiteSpaceInput.length) {
+    row++;
+  }
+
   let newStringMatrix = [];
   let counter = 0;
   let str = "";
@@ -27,7 +29,6 @@ function main(input) {
     str += " ";
   }
   return str;
-  // And then form the string in the column with separated spaces
 }
 
 main(input);
