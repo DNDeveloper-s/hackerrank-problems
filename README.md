@@ -1,2 +1,3 @@
 # hackerrank-problems
-Created with CodeSandbox
+
+Some Medium level hackerrank problems
