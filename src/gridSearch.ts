@@ -1,70 +1,77 @@
-// const G = ["123412", "561212", "123634", "781288"];
+const refArr = [
+  "34889246430321978567",
+  "58957542800420926643",
+  "35502505614464308821",
+  "14858224623252492823",
+  "72509980920257761017",
+  "22842014894387119401",
+  "01112950562348692493",
+  "16417403478999610594",
+  "79426411112116726706",
+  "65175742483779283052",
+  "89078730337964397201",
+  "13765228547239925167",
+  "26113704444636815161",
+  "25993216162800952044",
+  "88796416233981756034",
+  "14416627212117283516",
+  "15248825304941012863",
+  "88460496662793369385",
+  "59727291023618867708",
+  "19755940017808628326"
+];
 
-// const P = ["12", "34"];
+const patternArr = ["1641", "7942", "6517", "8907", "1376", "2691", "2599"];
 
-// /**
-//  *
-//  * @param G the grid to search, an array of strings
-//  * @param P the pattern to search for, an array of strings
-//  */
-// function main(G: Array<string>, P: Array<string>): "YES" | "NO" {
-//   let doesExist = false;
-//   let patternInd = 0;
-//   let strInd: number;
-//   for (let i = 0; i < G.length; i++) {
-//     if (
-//       G[i].includes(P[patternInd]) &&
-//       // Checking the string index
-//       (strInd === undefined || strInd === G[i].indexOf(P[patternInd]))
-//     ) {
-//       doesExist = true;
+/**
+ *
+ * @param G the grid to search, an array of strings
+ * @param P the pattern to search for, an array of strings
+ */
+function main(G: Array<string>, P: Array<string>): "YES" | "NO" {
+  let doesExist = false;
 
-//       // Setting the stringIndex
-//       strInd = G[i].indexOf(P[patternInd]);
+  for (let i = 0; i <= G.length - P.length; i++) {
+    let k = 0;
+    let initIndex = 0;
+    let patternInd = 0;
+    doesExist = false;
+    while (k <= G[0].length - P[0].length) {
+      let notExistInTheLine = false;
+      const isExist = G[i].indexOf(P[patternInd], initIndex);
+      if (isExist >= 0) {
+        let innerInd = isExist;
+        for (let j = i + 1; j < i + P.length; j++) {
+          patternInd++;
+          let index = G[j].indexOf(P[patternInd], innerInd);
+          if (index < 0) {
+            initIndex = 0;
+            patternInd = 0;
+            notExistInTheLine = true;
+            doesExist = false;
+            break;
+          } else if (index !== isExist) {
+            doesExist = false;
+            patternInd = 0;
+          } else if (index === isExist) {
+            doesExist = true;
+          }
+        }
+      }
+      if (notExistInTheLine) {
+        break;
+      }
+      initIndex = isExist + 1;
+      k++;
+    }
+    if (doesExist) {
+      break;
+    }
+  }
 
-//       // Increasing patternInd if everything goes well in condition
-//       if (patternInd < P.length - 1) {
-//         patternInd++;
-//       } else if (patternInd === P.length - 1) {
-//         // If we have reached to the last in patternInd then break the loop
-//         // Cause here we are truly confident that we have found the pattern in the grid
-//         break;
-//       }
-//     } else if (
-//       patternInd > 0 &&
-//       !G[i].includes(P[patternInd]) &&
-//       strInd !== G[i].indexOf(P[patternInd])
-//     ) {
-//       doesExist = false;
-//       patternInd = 0;
-//       strInd = undefined;
-//     }
-//   }
+  // Defining the result here
+  let result: "YES" | "NO" = doesExist ? "YES" : "NO";
+  return result;
+}
 
-//   // Defining the result here
-//   let result: "YES" | "NO" = doesExist ? "YES" : "NO";
-//   return result;
-// }
-
-// function getIntersectOf(refArr: Array<number>, arr: Array<number>): number[] {
-//   const resArr: number[] = [];
-//   arr.forEach((item: number) => {
-//     if (refArr.includes(item)) resArr.push(item);
-//   });
-//   return resArr;
-// }
-
-// function getIndexesOf(refStr: string, str: string) {
-//   let indexesArr = [];
-//   let i = 0;
-//   while (i <= refStr.length - str.length) {
-//     let indexOfStr = refStr.indexOf(str, i);
-//     indexesArr.push(indexOfStr);
-//     i = indexOfStr + 1;
-//   }
-//   return indexesArr;
-// }
-
-// console.log(getIndexesOf("12345612366763612334123", "12"));
-
-// console.log(main(G, P));
+console.log(main(refArr, patternArr));
