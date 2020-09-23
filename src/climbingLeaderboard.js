@@ -23,6 +23,8 @@ function binarySearch(input, num, rankings) {
   if (num >= input[k]) return rankings[0];
   if (num === input[l]) return rankings[input.length - 1];
   if (num < input[l]) return rankings[input.length - 1] + 1;
+
+  // Now starting the actual binary search algo
   let index;
   while (k !== l - 1) {
     let m = Math.floor((k + l) / 2);
