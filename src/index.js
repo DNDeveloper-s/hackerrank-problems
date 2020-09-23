@@ -1,3 +1,3 @@
 console.clear();
 
-require("./gridSearch");
+require("./absolutePermutation");
