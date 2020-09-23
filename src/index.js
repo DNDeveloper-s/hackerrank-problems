@@ -1,2 +1,3 @@
-import "./styles.css";
-import "./timeInWords";
+console.clear();
+
+require("./chocolateFeast");
