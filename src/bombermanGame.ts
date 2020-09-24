@@ -114,19 +114,4 @@ function removeFromArr(arr, val) {
   return newArr;
 }
 
-function pushToArr(arr, val) {
-  if (arr === undefined) arr = [];
-  const newArr = [...arr];
-  if (newArr.includes(val)) return newArr;
-  newArr.push(val);
-  return newArr.sort();
-}
-
-function replace(str: string, value: string, ind: number): string {
-  if (ind < 0 || ind >= str.length) return str;
-  const sArr = str.split("");
-  sArr[ind] = value;
-  return sArr.join("");
-}
-
 console.log(main(n, grid));
