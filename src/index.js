@@ -1,3 +1,3 @@
 console.clear();
 
-require("./absolutePermutation");
+require("./bombermanGame");

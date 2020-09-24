@@ -1,11 +1,5 @@
 console.log("------ --- - --- Absolute Permutation --- - --- ------");
 
-/**
- * Logic discussion
- *
- *
- */
-
 let n = 12,
   k = 3;
 
