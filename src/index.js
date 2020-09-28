@@ -1,3 +1,3 @@
 console.clear();
 
-require("./bombermanGame");
+require("./twoPluses");

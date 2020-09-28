@@ -1,4 +1,4 @@
-console.log("------ --- - --- Absolute Permutation --- - --- ------");
+console.log("------ --- - --- BomberMan Game --- - --- ------");
 
 const n = 3,
   // grid = [".......", "...O...", "....O..", ".......", "OO.....", "OO....."];
